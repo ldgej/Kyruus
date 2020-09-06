@@ -7,7 +7,7 @@ export class UserContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			users: null
+			users: null,
 		}
 	}
 	componentDidMount() {
@@ -31,6 +31,8 @@ export class UserContainer extends Component {
 		}).catch((error) => { console.log(error) });
 
 	}
+
+
 	handleOnUpdateUser = (id, name, email) => {
 		console.log(id, name, email);
 		fetch(`/users/${id}`, {
@@ -59,8 +61,8 @@ export class UserContainer extends Component {
 			})
 		}).catch((error) => { console.log(error) });
 	}
-	handleOnAddUser = (name,email) => {
-		console.log(name,email);
+	handleOnAddUser = (name, email) => {
+		console.log(name, email);
 		fetch(`/users`, {
 			method: "POST",
 			headers: {
@@ -72,11 +74,11 @@ export class UserContainer extends Component {
 			console.log(data);
 
 			this.setState({
-				users:[...this.state.users,data]
+				users: [...this.state.users, data]
 			})
 		}).catch((error) => { console.log(error) });
-	 }
-	
+	}
+
 	render() {
 		const { users } = this.state;
 		return (
@@ -91,7 +93,7 @@ export class UserContainer extends Component {
 						/>
 					})
 				}
-				<AddUser onAddUser={this.handleOnAddUser}/>
+				<AddUser onAddUser={this.handleOnAddUser} />
 			
 			</div>
 		)
